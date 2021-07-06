@@ -8,16 +8,24 @@
 import UIKit
 
 class CountryTableViewCell: UITableViewCell {
+    //Country cell class, to display international name and local name
+    @IBOutlet weak var internationalName: UILabel!
+    @IBOutlet weak var localName: UILabel!
+    public var cellCountry : Country!{
+        didSet{
+            updateUI()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    public func updateUI(){
+        //Uptade the labels
+        internationalName.text = cellCountry.getInternationalName()
+        localName.text = cellCountry.getLocalName()
     }
 
 }
